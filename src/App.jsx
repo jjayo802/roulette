@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import Rainbow from 'rainbowvis.js';
-import Modal from 'react-modal';
 
 function App() {
 
@@ -11,8 +10,6 @@ function App() {
   const [currentAngle, setCurrentAngle] = useState(0);
   const [rouletteCount, setRouletteCount] = useState(8);
   const [isRotating, setIsRotating] = useState(false);
-
-  const [modalOpen, setModalOpen] = useState(true);
 
   useEffect(() => {
     const canvasEle = canvas.current;
@@ -41,18 +38,6 @@ function App() {
     });
 
     drawFillTriangle(centerX - 30, centerY - 450, centerX + 30, centerY - 450, centerX, centerY - 375, "#ff6b6b");
-  }
-
-  const drawLine = (x1, y1, x2, y2) => {
-    const ctx = ctxRef.current;
-    ctx.lineJoin = 'round';
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = 'black';
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.closePath();
-    ctx.stroke();
   }
 
   const drawCircle = (x, y, r) => {
@@ -133,7 +118,6 @@ function App() {
       const sin = Math.sin(angle) * r;
 
       drawFillArc(x, y, r, angle, angle + angleOfOne, "#" + rainbow.colourAt(i));
-      //drawLine(x, y, x+cos, y+sin);
 
       const cos2 = Math.cos(angle + (angleOfOne/2)) * r * (9/10);
       const sin2 = Math.sin(angle + (angleOfOne/2)) * r * (9/10);
@@ -186,11 +170,6 @@ function App() {
       await sleep(0.01);
     }
     setIsRotating(false);
-    onStopRotating();
-  }
-
-  const onStopRotating = () => {
-
   }
 
   const resetAngle = () => {
@@ -212,54 +191,8 @@ function App() {
     return rouletteCount - i;
   }
 
-  const customModalStyles = {
-    overlay: {
-      backgroundColor: " rgba(0, 0, 0, 0.4)",
-      width: "100%",
-      height: "100vh",
-      zIndex: "10",
-      position: "fixed",
-      top: "0",
-      left: "0",
-    },
-    content: {
-      width: "360px",
-      height: "180px",
-      zIndex: "150",
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      borderRadius: "10px",
-      boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
-      backgroundColor: "white",
-      justifyContent: "center",
-      overflow: "auto",
-    },
-  };
-
-  function resultPopup({ message }) {
-    return (
-      <Modal
-        isOpen={modalOpen}
-        onRequestClose={() => setModalOpen(false)}
-        style={customModalStyles}
-        ariaHideApp={false}
-        contentLabel="Pop up Message"
-        shouldCloseOnOverlayClick={false}
-      >
-        <div>
-          {message}
-        </div>
-      </Modal>
-    );
-  }
-
   return (
     <div id='App'>
-      <div className='modal'>
-        {resultPopup("asdf")}
-      </div>
       <div className='flex-container'>
         <canvas className="canvas" ref={canvas} width="1920" height="1080"></canvas>
       </div>
