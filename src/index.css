@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Aggro-M";
+  font-weight: normal;
+  src: url("./fonts/SB-Aggro-M.ttf") format("truetype");
+}
+
+body {
+  font-family: "Aggro-M";
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}

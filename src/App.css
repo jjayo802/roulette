@@ -1,0 +1,73 @@
+html{
+     /* 드래그 방지 */
+     -ms-user-select: none;
+     -moz-user-select: -moz-none;
+     -webkit-user-select: none;
+     -khtml-user-select: none;
+     user-select: none;
+}
+
+body, #root, #App {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+#App {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+}
+
+.canvas {
+  height: 100%;
+}
+
+.result-number {
+  font-size: 40px;
+}
+
+.count-input-text {
+  text-align: center;
+  align-self: center;
+  font-size: 30px;
+}
+
+.count-input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-family: 'Aggro-M';
+  font-size: 20px;
+  margin: 10px;
+}
+
+.spin-button {
+  font-family: 'Aggro-M';
+  font-size: 30px;
+  width: 150px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
