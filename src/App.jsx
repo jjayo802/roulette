@@ -130,27 +130,27 @@ function App() {
     const centerX = canvas.current.width / 2;
     const centerY = canvas.current.height / 2;
 
-    const originalTransform = ctx.getTransform(); // 현재 상태 저장
-    ctx.translate(centerX, centerY); // 중앙으로 이동
-    ctx.rotate(angleInRadians); // 회전
-    ctx.translate(-centerX, -centerY); // 다시 원래 좌표계로 이동
+    const originalTransform = ctx.getTransform();
+    ctx.translate(centerX, centerY);
+    ctx.rotate(angleInRadians); 
+    ctx.translate(-centerX, -centerY);
 
-    drawFn(); // 원하는 그림 그리기
+    drawFn();
 
-    ctx.setTransform(originalTransform); // 이전 상태 복원
+    ctx.setTransform(originalTransform);
   };
 
   const drawTextRotated = (x, y, text, angle) => {
     const ctx = ctxRef.current;
 
-    ctx.save(); // 이건 이 함수 내부에서만 상태 저장
-    ctx.translate(x, y); // 텍스트 중심으로 이동
-    ctx.rotate(angle); // 텍스트 회전
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
     ctx.font = "30px Aggro-M";
     ctx.fillStyle = 'black';
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(text, 0, 0); // (0,0)은 translate로 이동된 좌표
+    ctx.fillText(text, 0, 0);
     ctx.restore();
   };
 
